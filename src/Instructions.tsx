@@ -5,12 +5,12 @@ const Instructions = () => {
   let navigate = useNavigate();
 
   const handleToNewGame = () => {
-    navigate('/game')
-  }
+    navigate("/choosing");
+  };
   return (
     <div style={{ textAlign: "center", padding: "2vw" }}>
       <h1>The Hangman</h1>
-      <HangmanDrawing numberOfGuesses={0} />
+      <HangmanDrawing />
       <h2>Game instructions</h2>
       <p className="game-instructions">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
@@ -21,7 +21,9 @@ const Instructions = () => {
         asperiores!
       </p>
 
-      <button className="btn-start" onClick={handleToNewGame}>GOT IT!</button>
+      <button className="btn-start" onClick={handleToNewGame}>
+        GOT IT!
+      </button>
     </div>
   );
 };

@@ -2,6 +2,10 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+body{
+  background: #212121;
+}
+
 svg path,
 svg circle {
   stroke: #000;
@@ -11,6 +15,7 @@ svg circle {
 }
 
 .container {
+  background: white;
   margin: 7vw auto;
   width: 70%;
   height: 60vw;
@@ -144,8 +149,50 @@ p {
 
 /* --- GAME INSTRUCTIONS --- */
 
-.game-instructions{
+.game-instructions {
   width: 70%;
-  margin: 0 auto 7vw auto;
+  margin: 0 auto 5vw auto;
+}
 
+/* --- CHOOSE WORD LENGTH --- */
+
+.word-length-btn-container {
+  text-align: center;
+  margin: 0 auto 10vw auto;
+  width: 25%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(4vw, 1fr));
+  gap: 1vw;
+}
+
+.number-btn {
+  width: 5vw;
+  border: 0.3vw solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  background: none;
+  font-size: 2vw;
+  text-transform: uppercase;
+  padding: 1vw 0.5vw;
+  font-weight: bold;
+  cursor: pointer;
+  color: black;
+}
+
+.random-btn {
+  width: 100%;
+  border: 0.2vw solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  background: none;
+  color: rgb(0, 0, 0);
+  height: 3.5vw;
+  width: 16vw;
+  font-size: 2.2vw;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.number-btn:focus,
+.random-btn:focus {
+  background: black;
+  color: white;
 }

@@ -52,8 +52,8 @@ const Game = () => {
   }, [guessedLetters]);
 
   const handleNewGame = () => {
+    navigate('/choosing')
     setGuessedLetters([]);
-    setWordToGuess(getWord());
   };
 
   const handleToInstructions = () => {
