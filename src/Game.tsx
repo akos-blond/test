@@ -4,7 +4,6 @@ import { HangmanWord } from "./HangmanWord";
 import { Keyboard } from "./Keyboard";
 import "./index.css";
 import HangmanDrawing from "./HangmanDrawing";
-import Instructions from "./Instructions";
 import { useNavigate } from "react-router-dom";
 
 function getWord() {
