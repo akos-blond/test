@@ -58,8 +58,8 @@ const Game = () => {
   };
 
   const handleToInstructions = () => {
-    navigate('/instructions')
-  }
+    navigate("/");
+  };
 
   console.log(wordToGuess);
   return (

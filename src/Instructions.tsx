@@ -5,7 +5,7 @@ const Instructions = () => {
   let navigate = useNavigate();
 
   const handleToNewGame = () => {
-    navigate('/')
+    navigate('/game')
   }
   return (
     <div style={{ textAlign: "center", padding: "2vw" }}>
