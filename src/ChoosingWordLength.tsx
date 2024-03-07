@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 
 const ChoosingWordLength = () => {
   const navigate = useNavigate();
   const [selectedButton, setSelectedButton] = useState<number | null>(null);
   const filterByNumber = [8, 9, 10, 11, 12, 13];
 
-  const handleButtonClick = (buttonValue) => {
+  const handleButtonClick = (buttonValue: SetStateAction<number | null>) => {
     setSelectedButton(buttonValue);
   };
 

@@ -11,7 +11,7 @@ function getWord() {
 }
 
 const Game = () => {
-  const [wordToGuess, setWordToGuess] = useState(getWord);
+  const [wordToGuess] = useState(getWord);
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
   let navigate = useNavigate();
@@ -74,8 +74,8 @@ const Game = () => {
         </div>
         <div className="word-and-keyboard">
           <h1>The Hangman</h1>
-          {isWinner && <p style={{ color: "lime" }}>You've won</p>}
-          {isLoser && <p style={{ color: "red" }}>You've lost</p>}
+          {isWinner && <p style={{ color: "lime", fontWeight: "bold" }}>You've won</p>}
+          {isLoser && <p style={{ color: "red", fontWeight: "bold" }}>You've lost</p>}
           <p style={{ visibility: isWinner || isLoser ? "hidden" : "visible" }}>
             It's a {wordToGuess.length} letter word
           </p>
@@ -94,7 +94,7 @@ const Game = () => {
             addGuessedLetter={addGuessedLetter}
           />
           <div className="btn-container">
-            <button className="btn-end">END GAME</button>
+            <button className="btn-end" onClick={handleToInstructions}>END GAME</button>
             <button className="btn-start" onClick={handleNewGame}>
               START NEW GAME
             </button>
