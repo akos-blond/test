@@ -141,3 +141,11 @@ p {
 .btn-start:hover {
   box-shadow: 1px 1px 10px rgb(105, 105, 105);
 }
+
+/* --- GAME INSTRUCTIONS --- */
+
+.game-instructions{
+  width: 70%;
+  margin: 0 auto 7vw auto;
+
+}

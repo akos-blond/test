@@ -1,12 +1,17 @@
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import Game from "./Game";
-
+import Instructions from "./Instructions";
 
 function App() {
   return (
     <div className="container">
-      <Game />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Game />} />
+          <Route path="/instructions" element={<Instructions />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
