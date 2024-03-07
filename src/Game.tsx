@@ -13,6 +13,7 @@ function getWord() {
 const Game = () => {
   const [wordToGuess] = useState(getWord);
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
+  const [failNumbers, setFailNumbers] = useState(0);
 
   let navigate = useNavigate();
 
@@ -74,6 +75,9 @@ const Game = () => {
         </div>
         <div className="word-and-keyboard">
           <h1>The Hangman</h1>
+          <div style={{textAlign: "end", fontWeight: "bold"}}>
+            Incorrect Guesses: {incorrectLetters.length}
+          </div>
           {isWinner && <p style={{ color: "lime", fontWeight: "bold" }}>You've won</p>}
           {isLoser && <p style={{ color: "red", fontWeight: "bold" }}>You've lost</p>}
           <p style={{ visibility: isWinner || isLoser ? "hidden" : "visible" }}>
