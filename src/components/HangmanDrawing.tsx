@@ -1,4 +1,4 @@
-import "./index.css";
+import "../index.css";
 
 const BODY_PARTS = [
   <path key="part1" d="M1,11 h8" />,

@@ -1,19 +1,17 @@
-import { useCallback, useEffect, useState } from "react";
-import words from "./hangman_words.json";
+import "../index.css";
+import { useContext, useEffect } from "react";
 import { HangmanWord } from "./HangmanWord";
 import { Keyboard } from "./Keyboard";
-import "./index.css";
 import HangmanDrawing from "./HangmanDrawing";
 import { useNavigate } from "react-router-dom";
-
-function getWord() {
-  return words[Math.floor(Math.random() * words.length)];
-}
+import { WordToGuessContext } from "../contexts/WordToGuessContext";
+import { GuessedLettersContext } from "../contexts/GuessedLettersContext";
 
 const Game = () => {
-  const [wordToGuess] = useState(getWord);
-  const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
-  const [failNumbers, setFailNumbers] = useState(0);
+  const wordToGuess = useContext(WordToGuessContext);
+  const { guessedLetters, setGuessedLetters } = useContext(
+    GuessedLettersContext
+  );
 
   let navigate = useNavigate();
 
@@ -26,14 +24,15 @@ const Game = () => {
     .split("")
     .every((letter) => guessedLetters.includes(letter));
 
-  const addGuessedLetter = useCallback(
-    (letter: string) => {
-      if (guessedLetters.includes(letter) || isLoser || isWinner) return;
+  const addGuessedLetter = (letter: string) => {
+    if (guessedLetters.includes(letter) || isLoser || isWinner) return;
 
-      setGuessedLetters((currentLetters) => [...currentLetters, letter]);
-    },
-    [guessedLetters, isLoser, isWinner]
-  );
+    setGuessedLetters((currentLetters: string[]) => [
+      ...currentLetters,
+      letter,
+    ]);
+    console.log(guessedLetters);
+  };
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -53,7 +52,7 @@ const Game = () => {
   }, [guessedLetters]);
 
   const handleNewGame = () => {
-    navigate('/choosing')
+    navigate("/choosing");
     setGuessedLetters([]);
   };
 
@@ -75,11 +74,15 @@ const Game = () => {
         </div>
         <div className="word-and-keyboard">
           <h1>The Hangman</h1>
-          <div style={{textAlign: "end", fontWeight: "bold"}}>
+          <div style={{ textAlign: "end", fontWeight: "bold" }}>
             Incorrect Guesses: {incorrectLetters.length}
           </div>
-          {isWinner && <p style={{ color: "lime", fontWeight: "bold" }}>You've won</p>}
-          {isLoser && <p style={{ color: "red", fontWeight: "bold" }}>You've lost</p>}
+          {isWinner && (
+            <p style={{ color: "lime", fontWeight: "bold" }}>You've won</p>
+          )}
+          {isLoser && (
+            <p style={{ color: "red", fontWeight: "bold" }}>You've lost</p>
+          )}
           <p style={{ visibility: isWinner || isLoser ? "hidden" : "visible" }}>
             It's a {wordToGuess.length} letter word
           </p>
@@ -98,7 +101,9 @@ const Game = () => {
             addGuessedLetter={addGuessedLetter}
           />
           <div className="btn-container">
-            <button className="btn-end" onClick={handleToInstructions}>END GAME</button>
+            <button className="btn-end" onClick={handleToInstructions}>
+              END GAME
+            </button>
             <button className="btn-start" onClick={handleNewGame}>
               START NEW GAME
             </button>
